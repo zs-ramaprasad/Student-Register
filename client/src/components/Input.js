@@ -1,16 +1,15 @@
 import React, { Fragment, useState } from 'react';
 
 
-const Input = ({ setStudentsChange }) => {
+const Input = () => {
 
-    const [studentInformation, setStudentInformation] = useState("");
+    const [name, setName] = useState("");
 
     const onSubmitForm = async (e) => {
         e.preventDefault(); 
       try {
-          const myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json")
-          const body = { studentInformation };
+          
+          const body = { name };
           const response =  await fetch("http://localhost:5000/students", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -31,8 +30,8 @@ const Input = ({ setStudentsChange }) => {
       {" "}
       <h3>Student List</h3>
       <form onSubmit={onSubmitForm}>
-          <input type="text" placeholder="Enter student information" value={studentInformation} 
-          onChange={(e) => setStudentInformation(e.target.value)}>
+          <input type="text" placeholder="Enter student name" value={name} 
+          onChange={(e) => setName(e.target.value)}>
           </input>
           <button>Add Student</button>
       </form>

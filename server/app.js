@@ -8,17 +8,16 @@ app.use(express.json());
 
 app.post("/students", async (req, res) => {
     try {
-        console.log(req.body);
-        const { student_name } = req.body;
-        const { student_email } = req.body;
-        const { degree_course } = req.body;
+        
+        const { name } = req.body;
+    
         const newStudent = await pool.query(
-          "INSERT INTO students (student_name) VALUES($1)  RETURNING *", 
-          [student_name]
+          "INSERT INTO students (name) VALUES($1)  RETURNING *", 
+          [name]
         );
       
         res.json(newStudent.rows[0]);
-  
+    
     } catch (err) {
       console.error(err.message);
     }
@@ -52,9 +51,9 @@ app.post("/students", async (req, res) => {
   app.put("/students/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const { student_name } = req.body;
-      const editStudent = await pool.query("UPDATE students SET student_name = $1 WHERE student_id = $2",
-      [student_name, id]);
+      const { name } = req.body;
+      const editStudent = await pool.query("UPDATE students SET name = $1 WHERE student_id = $2",
+      [name, id]);
   
       res.json("You successfully updated the student record")
     } catch (err) {

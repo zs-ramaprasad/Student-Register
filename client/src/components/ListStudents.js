@@ -23,6 +23,7 @@ const ListStudents = () => {
         method: "DELETE"
       });
 
+      setStudents(students.filter(student => student.student_id !== id))
       console.log(deleteStudent);
     } catch (err) {
       console.errror(err.message) 

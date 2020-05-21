@@ -8,7 +8,7 @@ function App() {
     <Input />
     </div>
   </Fragment>
-  )
+  );
 }
        
 

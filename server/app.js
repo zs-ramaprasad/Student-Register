@@ -24,6 +24,15 @@ app.post("/students", async (req, res) => {
     }
   });
 
+  app.get("/students", async(req, res) => {
+    try {
+      const getAllStudents = await pool.query("SELECT * FROM students");
+      res.json(getAllStudents.rows);
+  
+    } catch (err) {
+      console.error(err.message)
+    }
+  });
 
 
 

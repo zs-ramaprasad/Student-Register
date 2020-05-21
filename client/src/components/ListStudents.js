@@ -31,11 +31,13 @@ const ListStudents = () => {
           </tr>
         </thead> 
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+          {students.map((student) => (
+          <tr key={student.student_id}>
+            <td>{student.name}</td>
+            <td>Edit Student</td>
+            <td>Delete Student</td>
           </tr>
+          ))}
         </tbody>
       </table>
     </Fragment>

@@ -1,12 +1,15 @@
 import React, { Fragment, useState } from 'react';
 
-const Input = () => {
+
+const Input = ({ setStudentsChange }) => {
 
     const [studentInformation, setStudentInformation] = useState("");
 
-    const onSubmitForm = async (event) => {
-        event.preventDefault(); 
+    const onSubmitForm = async (e) => {
+        e.preventDefault(); 
       try {
+          const myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json")
           const body = { studentInformation };
           const response =  await fetch("http://localhost:5000/students", {
           method: "POST",
@@ -14,26 +17,27 @@ const Input = () => {
           body: JSON.stringify(body)
           });
 
-          console.log(response);
+          window.location = "/";
 
-
+    
          
-      } catch (err) {
-          console.error(err.message)
+      } catch (error) {
+          console.error(error.message)
       }
-    }
+    };
 
   return (
   <Fragment>
+      {" "}
       <h3>Student List</h3>
-      <form onSubmit={onSubmitForm} >
-          <input type="text" value={studentInformation} 
-          onChange={(event) => setStudentInformation(event.target.value)}>
-              </input> 
+      <form onSubmit={onSubmitForm}>
+          <input type="text" placeholder="Enter student information" value={studentInformation} 
+          onChange={(e) => setStudentInformation(e.target.value)}>
+          </input>
           <button>Add Student</button>
       </form>
   </Fragment>
   );
-}
+};
 
 export default Input;

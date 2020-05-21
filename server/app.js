@@ -34,7 +34,20 @@ app.post("/students", async (req, res) => {
     }
   });
 
-
+  app.get("/students/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const student = await pool.query("SELECT * FROM students WHERE student_id = $1", [id]
+      );
+  
+      res.json(student.rows[0]);
+  
+    console.log(req.params)
+    } catch (err) {
+      console.error(err.message)
+    }
+    
+  });
 
 app.listen(5000, function() {
     console.log("Listening for requests on Port 5000")

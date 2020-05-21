@@ -62,6 +62,18 @@ app.post("/students", async (req, res) => {
     }
     });
 
+    app.delete("/students/:id", async (req, res) => {
+        try {
+          const { id } = req.params;
+          const deleteStudent = await pool.query("DELETE FROM students WHERE student_id = $1", 
+          [id]);
+      
+          res.json("You succesfully deleted the student record")
+        } catch (err) {
+          console.log(err.message);
+        }
+      });
+
 app.listen(5000, function() {
     console.log("Listening for requests on Port 5000")
 });

@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 const ListStudents = () => {
   const [students, setStudents] = useState([]);
 
+  
   const getStudents = async() => {
     try {
 
@@ -15,6 +16,18 @@ const ListStudents = () => {
       console.error(err.message);
     }
   };
+
+  const deleteStudent = async (id) => {
+    try {
+      const deleteStudent = await fetch(`http://localhost:5000/students/${id}`, {
+        method: "DELETE"
+      });
+
+      console.log(deleteStudent);
+    } catch (err) {
+      console.errror(err.message) 
+    }
+  }
     
   useEffect(() => {
     getStudents();
@@ -34,8 +47,12 @@ const ListStudents = () => {
           {students.map((student) => (
           <tr key={student.student_id}>
             <td>{student.name}</td>
-            <td>Edit Student</td>
-            <td>Delete Student</td>
+            <td>
+              <button>Edit Student</button>
+            </td>
+            <td>
+              <button onClick={() => deleteStudent(student.student_id)}>Delete Student</button> 
+            </td>
           </tr>
           ))}
         </tbody>

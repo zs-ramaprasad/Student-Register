@@ -49,6 +49,19 @@ app.post("/students", async (req, res) => {
     
   });
 
+  app.put("/students/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { student_name } = req.body;
+      const editStudent = await pool.query("UPDATE students SET student_name = $1 WHERE student_id = $2",
+      [student_name, id]);
+  
+      res.json("You successfully updated the student record")
+    } catch (err) {
+      console.error(err.message)
+    }
+    });
+
 app.listen(5000, function() {
     console.log("Listening for requests on Port 5000")
 });

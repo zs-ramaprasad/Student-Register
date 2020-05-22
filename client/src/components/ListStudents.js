@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import EditStudent from './EditStudent';
 
 const ListStudents = () => {
   const [students, setStudents] = useState([]);
@@ -23,7 +24,7 @@ const ListStudents = () => {
         method: "DELETE"
       });
 
-      setStudents(students.filter(student => student.student_id !== id))
+      setStudents(students.filter(student => student.student_id !== id)) 
       console.log(deleteStudent);
     } catch (err) {
       console.errror(err.message) 
@@ -49,7 +50,7 @@ const ListStudents = () => {
           <tr key={student.student_id}>
             <td>{student.name}</td>
             <td>
-              <button>Edit Student</button>
+              <EditStudent student={student} />
             </td>
             <td>
               <button onClick={() => deleteStudent(student.student_id)}>Delete Student</button> 

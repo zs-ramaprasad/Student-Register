@@ -49,10 +49,9 @@ const EditStudent = ({student}) => {
               <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
             </div>
             <div className="modal-footer">
-              <button type="button" data-dismiss="modal">Exit</button>
+              <button type="button" className="btn btn-info" data-dismiss="modal">Exit</button>
               <button
-                type="button"
-                data-dismiss="modal"
+                type="button" className="btn btn-light" data-dismiss="modal"
                 onClick = {e => changeName(e)}>
                   Confirm
               </button>

@@ -1,13 +1,10 @@
 # Student Register
 
-## Student Register
+## About Student Register
 
 **Student Register** is a full-stack application, built with PostgreSQL, Express, React and Node.js, which 
 simulates a students register.
 The user can create students, edit and delete students.
-
-
-
 
 
 ## How to run
@@ -56,9 +53,5 @@ npm start
 
 ## What it looks like 
 
-![output](png)
-![output](png)
-![output](png)
-![output](png)
-![output](png)
-![output](png)
+![output](homepage.png)
+![output](edit.png)

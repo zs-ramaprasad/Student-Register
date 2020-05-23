@@ -32,9 +32,8 @@ const EditStudent = ({student}) => {
         className = "btn btn info"
         data-toggle="modal"
         data-target={`#id${student.student_id}`}>
-        Edit
+        Edit Student Information
         </button>
-      
       <div className="modal" id={`id${student.student_id}`} onClick={() => setName(student.name)}>
         <div className="modal-dialog">
           <div className="modal-content">
@@ -46,21 +45,17 @@ const EditStudent = ({student}) => {
                 data-dismiss="modal"
                 onClick={() => setName(student.name)}>&times;</button>
             </div>
-
             <div className="modal-body">
               <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
             </div>
-
             <div className="modal-footer">
-              <button type="button" data-dismiss="modal">Edit</button>
+              <button type="button" data-dismiss="modal">Exit</button>
               <button
                 type="button"
                 data-dismiss="modal"
                 onClick = {e => changeName(e)}>
-                  Edit student information
+                  Confirm
               </button>
-             
-            
             </div>
           </div>
         </div>

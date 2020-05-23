@@ -32,7 +32,7 @@ const EditStudent = ({student}) => {
         className = "btn btn info"
         data-toggle="modal"
         data-target={`#id${student.student_id}`}>
-        Edit Student Information
+        Edit Student
         </button>
       <div className="modal" id={`id${student.student_id}`} onClick={() => setName(student.name)}>
         <div className="modal-dialog">

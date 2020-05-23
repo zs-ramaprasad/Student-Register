@@ -28,8 +28,10 @@ const Input = () => {
   return (
   <Fragment>
       {" "}
-      <h3>Student List</h3>
-      <form onSubmit={onSubmitForm}>
+      <br />
+      <h2 align="center">Student Register</h2>
+      <br></br>
+      <form align="center" onSubmit={onSubmitForm}>
           <input type="text" placeholder="Enter student name" value={name} 
           onChange={(e) => setName(e.target.value)}>
           </input>

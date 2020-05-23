@@ -37,10 +37,10 @@ const ListStudents = () => {
 
     return  ( 
     <Fragment>        
-      <table className="table">
+      <table className="table mt-6 text-center">
         <thead>
           <tr>
-            <th>Student Information</th>
+            <th>Student</th>
             <th>Edit Student Information</th>
             <th>Delete Student Information</th>
           </tr>
@@ -53,7 +53,7 @@ const ListStudents = () => {
               <EditStudent student={student} />
             </td>
             <td>
-              <button onClick={() => deleteStudent(student.student_id)}>Delete Student</button> 
+              <button className="btn btn-light" onClick={() => deleteStudent(student.student_id)}>Delete Student</button> 
             </td>
           </tr>
           ))}

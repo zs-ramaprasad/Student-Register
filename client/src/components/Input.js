@@ -10,7 +10,7 @@ const Input = () => {
       try {
           
           const body = { name };
-          const response =  await fetch("http://localhost:5000/students", {
+          const response =  await fetch("http://localhost:5000/employees", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
@@ -29,10 +29,10 @@ const Input = () => {
   <Fragment>
       {" "}
       <br />
-      <h2 align="center">Student Register</h2>
+      <h2 align="center">employee Register</h2>
       <br></br>
       <form align="center" onSubmit={onSubmitForm}>
-          <input type="text" placeholder="Enter student name" value={name} 
+          <input type="text" placeholder="Enter employee name" value={name} 
           onChange={(e) => setName(e.target.value)}>
           </input>
           <button>Add Student</button>

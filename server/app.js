@@ -6,17 +6,17 @@ const pool = require("./db");
 app.use(cors());
 app.use(express.json());
 
-app.post("/students", async (req, res) => {
+app.post("/employees", async (req, res) => {
     try {
         
         const { name } = req.body;
     
-        const newStudent = await pool.query(
-          "INSERT INTO students (name) VALUES($1)  RETURNING *", 
+        const newemployee = await pool.query(
+          "INSERT INTO employees (name) VALUES($1)  RETURNING *",
           [name]
         );
       
-        res.json(newStudent.rows[0]);
+        res.json(newemployee.rows[0]);
     
     } catch (err) {
       console.error(err.message);
@@ -25,21 +25,21 @@ app.post("/students", async (req, res) => {
 
   app.get("/students", async(req, res) => {
     try {
-      const getAllStudents = await pool.query("SELECT * FROM students");
-      res.json(getAllStudents.rows);
+      const getAllemployee = await pool.query("SELECT * FROM employees");
+      res.json(getAllemployees.rows);
   
     } catch (err) {
       console.error(err.message)
     }
   });
 
-  app.get("/students/:id", async (req, res) => {
+  app.get("/employees/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const student = await pool.query("SELECT * FROM students WHERE student_id = $1", [id]
+      const employee = await pool.query("SELECT * FROM employees WHERE employee_id = $1", [id]
       );
   
-      res.json(student.rows[0]);
+      res.json(employee.rows[0]);
   
     console.log(req.params)
     } catch (err) {
@@ -48,26 +48,26 @@ app.post("/students", async (req, res) => {
     
   });
 
-  app.put("/students/:id", async (req, res) => {
+  app.put("/employees/:id", async (req, res) => {
     try {
       const { id } = req.params;
       const { name } = req.body;
-      const editStudent = await pool.query("UPDATE students SET name = $1 WHERE student_id = $2",
+      const editemployee = await pool.query("UPDATE employees SET name = $1 WHERE employee_id = $2",
       [name, id]);
   
-      res.json("You successfully updated the student record")
+      res.json("You successfully updated the employee record")
     } catch (err) {
       console.error(err.message)
     }
     });
 
-    app.delete("/students/:id", async (req, res) => {
+    app.delete("/employees/:id", async (req, res) => {
         try {
           const { id } = req.params;
-          const deleteStudent = await pool.query("DELETE FROM students WHERE student_id = $1", 
+          const deleteemployee = await pool.query("DELETE FROM employees WHERE employee_id = $1",
           [id]);
       
-          res.json("You succesfully deleted the student record")
+          res.json("You succesfully deleted the employee record")
         } catch (err) {
           console.log(err.message);
         }

@@ -35,7 +35,7 @@ const Input = () => {
           <input type="text" placeholder="Enter employee name" value={name} 
           onChange={(e) => setName(e.target.value)}>
           </input>
-          <button>Add Student</button>
+          <button>Add employee</button>
       </form>
   </Fragment>
   );

@@ -23,7 +23,7 @@ app.post("/employees", async (req, res) => {
     }
   });
 
-  app.get("/students", async(req, res) => {
+  app.get("/employees", async(req, res) => {
     try {
       const getAllemployee = await pool.query("SELECT * FROM employees");
       res.json(getAllemployees.rows);

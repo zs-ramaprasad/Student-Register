@@ -1,15 +1,15 @@
 import React, { Fragment , useState } from 'react';
 
-const EditStudent = ({student}) => {
-  console.log(student)
-  const [name, setName] = useState(student.name);
+const Editemployee = ({employee}) => {
+  console.log(employee)
+  const [name, setName] = useState(employee.name);
 
 
   const changeName = async e => {
     e.preventDefault(); 
     try {
       const body = { name };
-      const response = await fetch(`http://localhost:5000/students/${student.student_id}`, {
+      const response = await fetch(`http://localhost:5000/employees/${employee.employee_id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
@@ -31,19 +31,19 @@ const EditStudent = ({student}) => {
         type="button"
         className = "btn btn info"
         data-toggle="modal"
-        data-target={`#id${student.student_id}`}>
-        Edit Student
+        data-target={`#id${employee.employee_id}`}>
+        Edit employee
         </button>
-      <div className="modal" id={`id${student.student_id}`} onClick={() => setName(student.name)}>
+      <div className="modal" id={`id${employee.employee_id}`} onClick={() => setName(employee.name)}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Edit Student Information</h4>
+              <h4 className="modal-title">Edit employee Information</h4>
               <button
                 type="button"
                 className="close"
                 data-dismiss="modal"
-                onClick={() => setName(student.name)}>&times;</button>
+                onClick={() => setName(employee.name)}>&times;</button>
             </div>
             <div className="modal-body">
               <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
@@ -63,4 +63,4 @@ const EditStudent = ({student}) => {
   );
 };
 
-export default EditStudent;
+export default Editemployee;
